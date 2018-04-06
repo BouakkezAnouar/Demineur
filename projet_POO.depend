@@ -23,7 +23,7 @@
 1523048568 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\mine.h
 	"Case.h"
 
-1523056870 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
+1523056953 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
 	<cstdlib>
 	<iostream>
 	<ctime>
@@ -33,4 +33,19 @@
 	"Mine.h"
 	<typeinfo>
 	<utility>
+
+1523057893 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\blanc.cpp
+	"Blanc.h"
+	<string>
+
+1523057984 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\blanc.h
+	<string>
+	"Case.h"
+
+1523057993 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\numero.cpp
+	"Numero.h"
+	"Blanc.h"
+
+1523058006 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\numero.h
+	"Case.h"
 
