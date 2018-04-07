@@ -13,15 +13,20 @@ class Plateau
         Plateau(int l,int c,int m);
         virtual ~Plateau();
         void initialiser();
-        void remplir_plateau_initial(map<string,pair<int,int>> m);
+        void remplir_plateau_initial();
+        void placer_chiffres();
         void afficher();
 
 
+
     private:
+        void make_random();
 
         int lignes ;
         int colonnes;
         int nb_mines ;
+        int nb_coups;
+        map<string,pair<int,int>> mines ;
         Case plateau [50][50];
 
 };

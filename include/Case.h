@@ -6,7 +6,7 @@
 class Case
 {
     public:
-        Case( std::string s="X" , bool f=false , bool d=false);
+        Case( std::string s="#" , bool f=false , bool d=false);
         virtual ~Case();
         std::string getSymbole();
 
