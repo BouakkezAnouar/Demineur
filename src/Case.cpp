@@ -1,6 +1,7 @@
 #include "Case.h"
 #include<string>
-Case::Case(std::string s,bool f,bool d):decouverte(d),drapeau(f),symbole(s)
+using namespace std ;
+Case::Case(int c, string s, bool f,bool d):decouverte(d),drapeau(f),symbole(s),color(c)
 {
 
 }
@@ -10,6 +11,18 @@ Case::~Case()
     //dtor
 }
 
-std::string Case::getSymbole(){
+string Case::getSymbole(){
     return symbole;
 }
+int Case::getColor(){
+    return color;
+}
+bool Case::getDecouverte(){
+    return decouverte;
+}
+
+void Case::setDecouverte(bool b)
+{
+    decouverte = b ;
+}
+

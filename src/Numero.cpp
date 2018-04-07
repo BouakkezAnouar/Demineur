@@ -1,7 +1,7 @@
 #include "Numero.h"
 #include "Blanc.h"
 
-Numero::Numero(int n):Case(),num(n)
+Numero::Numero(int n,int c):Case(c),num(n)
 {
     switch(n) {
     case 1 : symbole = "1";   break;

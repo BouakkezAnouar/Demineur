@@ -1,21 +1,27 @@
 #ifndef CASE_H
 #define CASE_H
 #include <string>
-
+using namespace std ;
 
 class Case
 {
     public:
-        Case( std::string s="#" , bool f=false , bool d=false);
+        Case( int color=7, string s="#" , bool f=false , bool d=false );
         virtual ~Case();
-        std::string getSymbole();
+        string getSymbole();
+         int getColor();
+         bool getDecouverte();
+         void setDecouverte(bool b);
+        void afficher();
 
     protected:
 
     protected:
         bool decouverte;
         bool drapeau ;
-        std::string symbole;
+        string symbole;
+        int color ;
+
 };
 
 #endif // CASE_H

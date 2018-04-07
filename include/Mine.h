@@ -2,11 +2,12 @@
 #define MINE_H
 #include "Case.h"
 
+using namespace std ;
 
 class Mine : public Case
 {
     public:
-         Mine(std::string s="M");
+         Mine(int c=12,string s="M");
          virtual ~Mine();
 
     private:

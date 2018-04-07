@@ -1,7 +1,8 @@
 #include "Mine.h"
 #include<string>
+using namespace std ;
 
-Mine::Mine(std::string s):Case(s)
+Mine::Mine(int c, string s):Case(c,s)
 {
 
 }

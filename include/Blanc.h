@@ -7,7 +7,7 @@
 class Blanc: public Case
 {
     public:
-        Blanc(std::string s="X");
+        Blanc(int c=8,std::string s="X");
         virtual ~Blanc();
 
     protected:

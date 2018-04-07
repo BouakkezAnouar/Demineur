@@ -1,31 +1,34 @@
 # depslib dependency file v1.0
-1523128031 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\main.cpp
+1523142616 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\main.cpp
 	<iostream>
 	"Plateau.h"
+	<conio.h>
 
-1523125410 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\plateau.h
+1523142607 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\plateau.h
 	"Case.h"
 	<string>
 	<sstream>
 	<map>
 
-1523128018 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\case.h
+1523140626 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\case.h
 	<string>
 
-1523048132 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\case.cpp
+1523140945 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\case.cpp
 	"Case.h"
 	<string>
 
-1523047501 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\mine.cpp
+1523137974 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\mine.cpp
 	"Mine.h"
 	<string>
 
-1523048568 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\mine.h
+1523138089 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\mine.h
 	"Case.h"
 
-1523128180 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
+1523142626 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
 	<cstdlib>
+	<stdio.h>
 	<iostream>
+	<windows.h>
 	<ctime>
 	<string>
 	"Plateau.h"
@@ -36,18 +39,18 @@
 	<typeinfo>
 	<utility>
 
-1523057893 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\blanc.cpp
+1523138051 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\blanc.cpp
 	"Blanc.h"
 	<string>
 
-1523057984 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\blanc.h
+1523138073 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\blanc.h
 	<string>
 	"Case.h"
 
-1523127832 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\numero.cpp
+1523138440 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\numero.cpp
 	"Numero.h"
 	"Blanc.h"
 
-1523058006 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\numero.h
+1523138499 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\numero.h
 	"Case.h"
 
