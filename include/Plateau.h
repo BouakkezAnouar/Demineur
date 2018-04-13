@@ -17,7 +17,7 @@ class Plateau
         void placer_chiffres();
         void afficher();
         void afficher_tous();
-        bool choisir(int l ,int c);
+        int choisir(int l ,int c);
 
 
 
@@ -29,7 +29,7 @@ class Plateau
         int nb_mines ;
         int nb_coups;
         map<string,pair<int,int>> mines ;
-        Case plateau [50][50];
+        Case* plateau [50][50];
 
 };
 

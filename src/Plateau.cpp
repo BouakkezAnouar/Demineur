@@ -15,8 +15,6 @@
 
 using namespace std ;
 
-
- // use current time as seed for random generator
 Plateau::Plateau(int l, int c , int m):lignes(l),colonnes(c),nb_mines(m)
 {
 
@@ -80,9 +78,9 @@ string s ;
         for(int j=0; j<colonnes;j++){
                 s = to_string(i)+","+to_string(j);
                 if (mines.count(s)==1)
-                    plateau[i][j] =Mine();
+                    plateau[i][j] = new Mine();
                 else
-                    plateau[i][j] = Blanc();
+                    plateau[i][j] = new Blanc();
             }
     }
 }
@@ -93,30 +91,30 @@ void Plateau::placer_chiffres(){
         for (int j=0 ; j<colonnes ;j++)
             {
                 compteur = 0 ;
-                if (plateau[i][j].getSymbole()=="X")
+                if (plateau[i][j]->getSymbole()=="X")
                   {
                     if ( (i-1 >=0)  && (j-1 >= 0) )
-                            if (plateau[i-1][j-1].getSymbole()=="M") compteur++;
+                            if (plateau[i-1][j-1]->getSymbole()=="M") compteur++;
                     if ( (i-1 >=0) && (j >= 0) )
-                            if (plateau[i-1][j].getSymbole()=="M") compteur++;
+                            if (plateau[i-1][j]->getSymbole()=="M") compteur++;
                     if ( (i-1 >=0) && (j+1 >= 0) && (j+1<colonnes) )
-                            if (plateau[i-1][j+1].getSymbole()=="M") compteur++;
+                            if (plateau[i-1][j+1]->getSymbole()=="M") compteur++;
 
                     if ( (i >=0) && (j+1 >= 0) && (j+1 <colonnes))
-                            if (plateau[i][j+1].getSymbole()=="M") compteur++;
+                            if (plateau[i][j+1]->getSymbole()=="M") compteur++;
                     if ( (i >=0) && (j-1 >= 0) )
-                            if (plateau[i][j-1].getSymbole()=="M") compteur++;
+                            if (plateau[i][j-1]->getSymbole()=="M") compteur++;
 
                     if ( (i+1 >=0) && (j-1 >= 0) && (i+1 <lignes) )
-                            if (plateau[i+1][j-1].getSymbole()=="M") compteur++;
+                            if (plateau[i+1][j-1]->getSymbole()=="M") compteur++;
                     if ( (i+1 >=0) && (j >= 0) && (i+1 <lignes) )
-                            if (plateau[i+1][j].getSymbole()=="M") compteur++;
+                            if (plateau[i+1][j]->getSymbole()=="M") compteur++;
                     if ( (i+1 >=0) && (j+1 >= 0) && (i+1 <lignes) && (j+1 <colonnes) )
-                            if (plateau[i+1][j+1].getSymbole()=="M") compteur++;
+                            if (plateau[i+1][j+1]->getSymbole()=="M") compteur++;
                  }
 
-                 if (plateau[i][j].getSymbole()=="X" && compteur >0)
-                    plateau[i][j]=Numero(compteur);
+                 if (plateau[i][j]->getSymbole()=="X" && compteur >0)
+                    plateau[i][j]= new Numero(compteur);
 
             }
     }
@@ -126,15 +124,14 @@ void Plateau::placer_chiffres(){
 // placer les mines et les autres cases sans numeros
 void Plateau::initialiser(){
         make_random();
-        map<string,pair<int,int> >::iterator it;
+      //  map<string,pair<int,int> >::iterator it;
         //placer les bombes dans les plateau
-        for( it=mines.begin(); it!=mines.end();it++)
-             plateau[it->second.first][it->second.second] = Mine() ;
+      //  for( it=mines.begin(); it!=mines.end();it++)
+          //   plateau[it->second.first][it->second.second] = Mine() ;
              // remplir le plateau initialement
         remplir_plateau_initial() ;
+        placer_chiffres();
 }
-
-
 
 
 //affichage plateau
@@ -144,28 +141,29 @@ void Plateau::afficher(){
     std::system("cls");
     cout << "Nombre de mines: "<<nb_mines<<endl;
     cout << "Nombre de coups: "<<nb_coups<<endl ;
-    cout <<"   ";
+    cout <<"   "; //3 espace a decaler
     for (int i=1 ;i<=colonnes; i++)
-        cout <<i<<" ";
+       {
+           if (i<10)
+           cout <<i<<"  ";// afficher les chifrres en haut
+           else cout <<i<<" "; // nombre avec 2chiffres
+       }
     cout <<endl<<endl  ;
 
     for(int i=0; i<lignes;i++){
-            if (i+1<10)cout <<i+1<<"  ";
-            else if (i+1>=10) cout <<i+1<<" ";
-            else  cout <<i+1;
+           if (i+1<10) cout <<i+1<<"  ";  else if (i+1>=10) cout <<i+1<<" ";  else  cout <<i+1;
+
         for(int j=0; j<colonnes;j++)
                {
                    s="#";
                    c =7;
-                   if(plateau[i][j].getDecouverte()==true)
-                    {s=plateau[i][j].getSymbole();
-                    c=plateau[i][j].getColor();
+                   if(plateau[i][j]->getDecouverte()==true)
+                    {s=plateau[i][j]->getSymbole();
+                    c=plateau[i][j]->getColor();
                     }
-                   coutc(c, s);
-                  //system("pause");
+                   coutc(c, s);cout <<"  ";
                }
-
-    cout <<" " << endl ;
+         cout <<"  "<< endl ;
 
     }
 
@@ -175,72 +173,56 @@ void Plateau::afficher_tous(){
     string s;
     int c ;
     for(int i=0; i<lignes;i++){
-            if (i+1<10)cout <<i+1<<"  ";
-            else if (i+1>=10) cout <<i+1<<" ";
-            else  cout <<i+1;
+            if (i+1<10)cout <<i+1<<"  ";  else if (i+1>=10) cout <<i+1<<" ";  else  cout <<i+1;
+
         for(int j=0; j<colonnes;j++)
-               {
-                    s=plateau[i][j].getSymbole();
-                    c=plateau[i][j].getColor();
-                   coutc(c, s);
-                  //system("pause");
-               }
+                   coutc(plateau[i][j]->getColor(),plateau[i][j]->getSymbole()); cout <<" ";
 
-    cout <<" " << endl ;
-}
+        cout <<"  " << endl ;
+        }
 }
 
-bool Plateau::choisir(int i,int j)
+int Plateau::choisir(int i,int j)
 {
 
-                    if (plateau[i][j].getSymbole()=="M")
-                        return false ;
-                    plateau[i][j].setDecouverte(true);
+                 if (i <lignes && j < colonnes  )
+                 {
+                     plateau[i][j]->setDecouverte(true);
+
+                    if (plateau[i][j]->getSymbole()=="M")
+                        return 1 ;
+
+                   if (typeid(*plateau[i][j]) == typeid(Numero))
+                        return 2 ;
 
 
-                   if ( (i-1 >=0)  && (j-1 >= 0) )
-                           // {
-                            if (plateau[i-1][j-1].getSymbole()!="M") plateau[i-1][j-1].setDecouverte(true);
-                           // if (plateau[i-1][j-1].getSymbole()=="X") Plateau::choisir(i-1,j-1);
-                           // }
+                     if ( (i-1 >=0)  && (j-1 >= 0) )
+                            if (plateau[i-1][j-1]->getSymbole()!="M" && plateau[i-1][j-1]->getDecouverte()==false )  Plateau::choisir(i-1,j-1);
                     if ( (i-1 >=0) && (j >= 0) )
-                            //{
-                                if (plateau[i-1][j].getSymbole()!="M") plateau[i-1][j].setDecouverte(true);
-                           // if (plateau[i-1][j].getSymbole()=="X") Plateau::choisir(i-1,j);
-                           // }
+                            if (plateau[i-1][j]->getSymbole()!="M" && plateau[i-1][j]->getDecouverte()==false )  Plateau::choisir(i-1,j);
                     if ( (i-1 >=0) && (j+1 >= 0) && (j+1<colonnes) )
-                           // {
-                                if (plateau[i-1][j+1].getSymbole()!="M") plateau[i-1][j+1].setDecouverte(true);
-                          //  if (plateau[i-1][j+1].getSymbole()=="X") Plateau::choisir(i-1,j+1);
-                           // }
+                           if (plateau[i-1][j+1]->getSymbole()!="M" && plateau[i-1][j+1]->getDecouverte()==false )  Plateau::choisir(i-1,j+1);
+
+
                     if ( (i >=0) && (j+1 >= 0) && (j+1 <colonnes))
-                           // {
-                                if (plateau[i][j+1].getSymbole()!="M") plateau[i][j+1].setDecouverte(true);
-                            //if (plateau[i][j+1].getSymbole()=="X") Plateau::choisir(i,j+1);
-                           // }
+                            if (plateau[i][j+1]->getSymbole()!="M" && plateau[i][j+1]->getDecouverte()==false )  Plateau::choisir(i,j+1);
                     if ( (i >=0) && (j-1 >= 0) )
-                            //{
-                                if (plateau[i][j-1].getSymbole()!="M") plateau[i][j-1].setDecouverte(true);
-                           // if (plateau[i][j-1].getSymbole()=="X") Plateau::choisir(i,j-1);
-                           // }
+                            if (plateau[i][j-1]->getSymbole()!="M" && plateau[i][j-1]->getDecouverte()==false )  Plateau::choisir(i,j-1);
+
 
                     if ( (i+1 >=0) && (j-1 >= 0) && (i+1 <lignes) )
-                           // {
-                                if (plateau[i+1][j-1].getSymbole()!="M") plateau[i+1][j-1].setDecouverte(true);
-                           // if (plateau[i+1][j-1].getSymbole()=="X") Plateau::choisir(i+1,j-1);
-                          //  }
-                    if ( (i+1 >=0) && (j >= 0) && (i+1 <lignes) )
-                            //{
-                                if (plateau[i+1][j].getSymbole()!="M")  plateau[i+1][j].setDecouverte(true);
-                           // if (plateau[i+1][j].getSymbole()=="X") Plateau::choisir(i+1,j);
-                           // }
-                    if ( (i+1 >=0) && (j+1 >= 0) && (i+1 <lignes) && (j+1 <colonnes) )
-                           // {
-                                if (plateau[i+1][j+1].getSymbole()!="M") plateau[i+1][j+1].setDecouverte(true);
-                          //  if (plateau[i+1][j+1].getSymbole()=="X") Plateau::choisir(i+1,j+1);
-                         //   }
+                            if (plateau[i+1][j-1]->getSymbole()!="M" && plateau[i+1][j-1]->getDecouverte()==false )   Plateau::choisir(i+1,j-1);
 
-                    return true ;
+                    if ( (i+1 >=0) && (j >= 0) && (i+1 <lignes) )
+                            if (plateau[i+1][j]->getSymbole()!="M" && plateau[i+1][j]->getDecouverte()==false )  Plateau::choisir(i+1,j);
+
+                    if ( (i+1 >=0) && (j+1 >= 0) && (i+1 <lignes) && (j+1 <colonnes) )
+                           if (plateau[i+1][j+1]->getSymbole()!="M" && plateau[i+1][j+1]->getDecouverte()==false )  Plateau::choisir(i+1,j+1);
+
+                    return 0 ; // tous va bien !
+                 }
+
+                   return -1 ; // ligne ou colonne donnée est erronée
 }
 
 

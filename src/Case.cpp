@@ -6,7 +6,7 @@ Case::Case(int c, string s, bool f,bool d):decouverte(d),drapeau(f),symbole(s),c
 
 }
 
-Case::~Case()
+ Case::~Case()
 {
     //dtor
 }
