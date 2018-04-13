@@ -12,6 +12,8 @@
 #include<typeinfo>
 #include <utility>      // std::pair
 
+ //void ClearScreen()   {   HANDLE                     hStdOut;   CONSOLE_SCREEN_BUFFER_INFO csbi;   DWORD                      count;   DWORD                      cellCount;   COORD                      homeCoords = { 0, 0 };    hStdOut = GetStdHandle( STD_OUTPUT_HANDLE );   if (hStdOut == INVALID_HANDLE_VALUE) return;    /* Get the number of cells in the current buffer */   if (!GetConsoleScreenBufferInfo( hStdOut, &csbi )) return;   cellCount = csbi.dwSize.X *csbi.dwSize.Y;    /* Fill the entire buffer with spaces */   if (!FillConsoleOutputCharacter(     hStdOut,     (TCHAR) ' ',     cellCount,     homeCoords,     &count     )) return;    /* Fill the entire buffer with the current colors and attributes */   if (!FillConsoleOutputAttribute(     hStdOut,     csbi.wAttributes,     cellCount,     homeCoords,     &count     )) return;    /* Move the cursor home */   SetConsoleCursorPosition( hStdOut, homeCoords );   }
+
 
 using namespace std ;
 
@@ -44,6 +46,16 @@ string to_string(int n){
         str1 << n ;
         return str1.str();
 }
+
+int Plateau::nb_couverte(){
+    int compteur =0 ;
+        for (int i=0 ; i<lignes ; i++)
+            for(int j=0 ; j<colonnes;j++)
+                if (plateau[i][j]->getDecouverte()==false)
+                   compteur++;
+    return compteur ;
+}
+
 
  void Plateau::make_random(){
     int random_ligne,random_colonne;
@@ -135,13 +147,15 @@ void Plateau::initialiser(){
 
 
 //affichage plateau
-void Plateau::afficher(){
+void Plateau::afficher(int nb_coups,int nb_m,int score){
     string s ;
     int c ;
-    std::system("cls");
-    cout << "Nombre de mines: "<<nb_mines<<endl;
-    cout << "Nombre de coups: "<<nb_coups<<endl ;
+       // ClearScreen();
+    cout << "Nombre de mines: "<<nb_m<<"                        ";
+    cout << "Nombre de coups: "<<nb_coups<<"              score : " <<score<<endl ;
     cout <<"   "; //3 espace a decaler
+
+    //int margin-top =
     for (int i=1 ;i<=colonnes; i++)
        {
            if (i<10)
@@ -171,7 +185,7 @@ void Plateau::afficher(){
 
 void Plateau::afficher_tous(){
     string s;
-    int c ;
+
     for(int i=0; i<lignes;i++){
             if (i+1<10)cout <<i+1<<"  ";  else if (i+1>=10) cout <<i+1<<" ";  else  cout <<i+1;
 

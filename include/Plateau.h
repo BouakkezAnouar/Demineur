@@ -4,7 +4,9 @@
 #include<string>
 #include <sstream>
 #include<map>
+
 using namespace std ;
+
 
 
 class Plateau
@@ -15,9 +17,10 @@ class Plateau
         void initialiser();
         void remplir_plateau_initial();
         void placer_chiffres();
-        void afficher();
+        void afficher(int nb_coups,int nb_m,int score);
         void afficher_tous();
         int choisir(int l ,int c);
+        int nb_couverte();
 
 
 
@@ -27,7 +30,6 @@ class Plateau
         int lignes ;
         int colonnes;
         int nb_mines ;
-        int nb_coups;
         map<string,pair<int,int>> mines ;
         Case* plateau [50][50];
 
