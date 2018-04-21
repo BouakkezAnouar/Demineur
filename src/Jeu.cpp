@@ -41,6 +41,7 @@ cout <<endl;
 
 bool Jeu::jouer(int l, int c ,int m )
 { int  a ,ligne,colonne;
+    int ch ;
 bool perdu ,gagner;
    ClearScreen();
         Plateau p(l,c,m);
@@ -54,10 +55,24 @@ bool perdu ,gagner;
                             //p.afficher(nb_coups,nb_mines,score);
                             //p.afficher_tous();
                             //p.afficher_tous();
-                         do {cout <<"choix : " ;cin >> ligne >> colonne ;
-                            } while ( ligne-1>=l ||  colonne-1 >= c);
 
-                             a = p.choisir(ligne-1,colonne-1);
+                         //do {cout <<"choix : " ;cin >> ligne >> colonne ;
+                         //   } while ( ligne-1>=l ||  colonne-1 >= c);
+
+                            do {
+                                cout << "1. choix colonne a decouvrir"<<endl  ;
+                                cout<<  "2. Drapeau"<<endl ;
+                                cin >> ch ;
+                            }while(ch!=1 && ch!=2);
+
+                            if (ch==1)
+                            {
+                                ClearScreen();
+                                p.afficher(nb_coups,nb_mines,score);
+                                do {cout <<"choix : " ;cin >> ligne >> colonne ;
+                                    } while ( ligne-1>=l ||  colonne-1 >= c);
+
+                                     a = p.choisir(ligne-1,colonne-1);
 
                              if (a==2) {score++; nb_coups++; }
                               if (a==0){score+=3; nb_coups++;}
@@ -65,7 +80,32 @@ bool perdu ,gagner;
                               p.afficher(nb_coups,nb_mines,score);
                              // p.afficher_tous();
                             if (a == 1) perdu = true ;
-                           if (nb_mines==p.nb_couverte()) gagner=true ;
+                            else { if (nb_mines==p.nb_couverte()) gagner=true ;}
+
+                            }
+
+                            else {
+                                    ClearScreen();
+                                p.afficher(nb_coups,nb_mines,score);
+                                do {cout <<"Drapeau : " ;cin >> ligne >> colonne ;
+                                    } while ( ligne-1>=l ||  colonne-1 >= c);
+
+
+
+                                    int r = p.setDrapeau(ligne-1,colonne-1,nb_mines);
+
+                                    if (r==-1) nb_mines+=1;
+                                    else if (r==1 ) nb_mines-=1;
+
+
+                                        if (nb_mines==0) if (p.testGagne()==0) gagner=true ;
+
+                                      ClearScreen();
+                              p.afficher(nb_coups,nb_mines,score);
+                            }
+
+
+
 
                 } while (perdu==false && gagner==false);
 

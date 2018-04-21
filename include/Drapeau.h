@@ -1,16 +1,17 @@
 #ifndef DRAPEAU_H
 #define DRAPEAU_H
+#include "Case.h"
 
+using namespace std ;
 
-class Drapeau
+class Drapeau : public Case
 {
     public:
-        Drapeau();
-        virtual ~Drapeau();
-
-    protected:
+         Drapeau(int c=2,string s="D");
+         virtual ~Drapeau();
 
     private:
+
 };
 
-#endif // DRAPEAU_H
+#endif // MINE_H

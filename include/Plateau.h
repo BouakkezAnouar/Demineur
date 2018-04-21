@@ -20,6 +20,8 @@ class Plateau
         void afficher(int nb_coups,int nb_m,int score);
         void afficher_tous();
         int choisir(int l ,int c);
+        int testGagne();
+        int setDrapeau(int l ,int c,int nb);
         int nb_couverte();
 
 

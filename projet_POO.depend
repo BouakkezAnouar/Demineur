@@ -4,16 +4,16 @@
 	"Jeu.h"
 	<conio.h>
 
-1523660571 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\plateau.h
+1524353004 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\plateau.h
 	"Case.h"
 	<string>
 	<sstream>
 	<map>
 
-1523140626 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\case.h
+1524347563 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\case.h
 	<string>
 
-1524181753 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\case.cpp
+1524347598 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\case.cpp
 	"Case.h"
 	<string>
 
@@ -24,7 +24,7 @@
 1523138089 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\mine.h
 	"Case.h"
 
-1524341452 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
+1524353107 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
@@ -32,6 +32,7 @@
 	<ctime>
 	<string>
 	"Plateau.h"
+	"Drapeau.h"
 	"Mine.h"
 	"Blanc.h"
 	"Numero.h"
@@ -56,9 +57,15 @@
 
 1523660304 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\jeu.h
 
-1524328728 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\jeu.cpp
+1524353161 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\jeu.cpp
 	"Jeu.h"
 	"Plateau.h"
 	<iostream>
 	<windows.h>
+
+1524342975 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\drapeau.cpp
+	"Drapeau.h"
+
+1524344397 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\drapeau.h
+	"Case.h"
 

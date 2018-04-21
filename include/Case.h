@@ -11,6 +11,8 @@ class Case
         string getSymbole();
          int getColor();
          bool getDecouverte();
+         bool getDrapeau();
+         void setDrapeau(bool t);
          void setDecouverte(bool b);
         void afficher();
 

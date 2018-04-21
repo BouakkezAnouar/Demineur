@@ -1,6 +1,6 @@
 #include "Drapeau.h"
 
-Drapeau::Drapeau()
+Drapeau::Drapeau(int c, string s):Case(c,s)
 {
     //ctor
 }

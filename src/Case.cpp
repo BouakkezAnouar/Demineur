@@ -21,6 +21,14 @@ bool Case::getDecouverte(){
     return decouverte;
 }
 
+void Case::setDrapeau(bool t){
+    drapeau = t ;
+}
+
+bool Case::getDrapeau(){
+    return drapeau;
+}
+
 void Case::setDecouverte(bool b)
 {
     decouverte = b ;

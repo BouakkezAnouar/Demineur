@@ -5,6 +5,7 @@
 #include <ctime>
 #include <string>
 #include "Plateau.h"
+#include "Drapeau.h"
 #include "Mine.h"
 #include "Blanc.h"
 #include "Numero.h"
@@ -55,6 +56,7 @@ int Plateau::nb_couverte(){
                    compteur++;
     return compteur ;
 }
+
 
 
  void Plateau::make_random(){
@@ -133,6 +135,32 @@ void Plateau::placer_chiffres(){
 }
 
 
+int Plateau::setDrapeau(int l, int c,int nb){
+    if (plateau[l][c]->getDecouverte()==true)
+        return 2 ;
+    else {
+        if ( plateau[l][c]->getDrapeau()==true)
+        {plateau[l][c]->setDrapeau(false); return -1; }
+        else { if (nb >0 ) {plateau[l][c]->setDrapeau(true);
+                            return 1;}
+                            else return 2 ;}
+        }
+
+}
+
+int Plateau::testGagne(){
+    for (int i=0; i<lignes;i++)
+        for(int j=0 ; j<colonnes;j++)
+            {
+                if (plateau[i][j]->getSymbole()=="M")
+                        if (plateau[i][j]->getDrapeau()==false)
+                            return 1 ;
+            }
+
+            return 0 ;
+}
+
+
 // placer les mines et les autres cases sans numeros
 void Plateau::initialiser(){
         make_random();
@@ -192,7 +220,9 @@ void Plateau::afficher(int nb_coups,int nb_m,int score){
                     {s=plateau[i][j]->getSymbole();
                     c=plateau[i][j]->getColor();
                     }
-                   coutc(c, s);cout <<"  ";
+                    if (plateau[i][j]->getDrapeau()!=true)
+                     {coutc(c, s);cout <<"  ";}
+                   else  {coutc(93,"D");cout <<"  ";}
 
                }
                              // if (margin==0) cout<<"  ";
@@ -224,7 +254,11 @@ void Plateau::afficher_tous(){
 
 int Plateau::choisir(int i,int j)
 {
-                 if (i <lignes && j < colonnes  )
+
+
+                if (plateau[i][j]->getDrapeau()==true)
+                    return 4;
+                else if (i <lignes && j < colonnes  )
                  {
                      plateau[i][j]->setDecouverte(true);
 
