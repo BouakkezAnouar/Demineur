@@ -146,25 +146,42 @@ void Plateau::initialiser(){
 }
 
 
+
 //affichage plateau
 void Plateau::afficher(int nb_coups,int nb_m,int score){
     string s ;
     int c ;
+     int margin;
        // ClearScreen();
     cout << "Nombre de mines: "<<nb_m<<"                        ";
     cout << "Nombre de coups: "<<nb_coups<<"              score : " <<score<<endl ;
-    cout <<"   "; //3 espace a decaler
 
-    //int margin-top =
-    for (int i=1 ;i<=colonnes; i++)
+    coutc(3,"   *****************************************************************************************************");cout<<endl ;
+    coutc(3,"   *                                                                                                   *");cout<<endl;
+    coutc(3,"   *");
+            if (colonnes%2!=0)  margin = (32-colonnes)/2;
+            else margin = (31-colonnes)/2;
+
+
+             cout <<"   ";
+             if (margin==0) cout<<"   ";
+             for(int p=0 ;p<margin;p++ ) cout<<"   "; //3 espace a decaler
+      for (int i=1 ;i<=colonnes; i++)
        {
            if (i<10)
            cout <<i<<"  ";// afficher les chifrres en haut
            else cout <<i<<" "; // nombre avec 2chiffres
        }
-    cout <<endl<<endl  ;
+        for(int p=0;p<=margin;p++) cout<<"   ";
 
-    for(int i=0; i<lignes;i++){
+            if (colonnes%2==0 && margin !=0) cout<<"   ";
+           coutc(3,"*");
+          cout <<endl;
+
+
+         for(int i=0; i<lignes;i++){
+
+            coutc(3,"   *"); if (margin==0) cout <<"   ";for(int p=0 ;p<margin;p++ ) cout<<"   ";
            if (i+1<10) cout <<i+1<<"  ";  else if (i+1>=10) cout <<i+1<<" ";  else  cout <<i+1;
 
         for(int j=0; j<colonnes;j++)
@@ -176,10 +193,19 @@ void Plateau::afficher(int nb_coups,int nb_m,int score){
                     c=plateau[i][j]->getColor();
                     }
                    coutc(c, s);cout <<"  ";
+
                }
+                             // if (margin==0) cout<<"  ";
+                    for(int p=0;p<=margin;p++) cout<<"   ";
+                        if (colonnes%2==0 && margin!=0) cout<<"   ";
+                        coutc(3,"*");
+
          cout <<"  "<< endl ;
 
     }
+    coutc(3,"   *                                                                                                   *");cout<<endl;
+    coutc(3,"   *****************************************************************************************************");
+    cout <<endl;
 
 }
 
@@ -198,7 +224,6 @@ void Plateau::afficher_tous(){
 
 int Plateau::choisir(int i,int j)
 {
-
                  if (i <lignes && j < colonnes  )
                  {
                      plateau[i][j]->setDecouverte(true);
@@ -210,28 +235,18 @@ int Plateau::choisir(int i,int j)
                         return 2 ;
 
 
-                     if ( (i-1 >=0)  && (j-1 >= 0) )
-                            if (plateau[i-1][j-1]->getSymbole()!="M" && plateau[i-1][j-1]->getDecouverte()==false )  Plateau::choisir(i-1,j-1);
-                    if ( (i-1 >=0) && (j >= 0) )
-                            if (plateau[i-1][j]->getSymbole()!="M" && plateau[i-1][j]->getDecouverte()==false )  Plateau::choisir(i-1,j);
-                    if ( (i-1 >=0) && (j+1 >= 0) && (j+1<colonnes) )
-                           if (plateau[i-1][j+1]->getSymbole()!="M" && plateau[i-1][j+1]->getDecouverte()==false )  Plateau::choisir(i-1,j+1);
+                     if ( (i-1 >=0)  && (j-1 >= 0))  if (plateau[i-1][j-1]->getSymbole()!="M" && plateau[i-1][j-1]->getDecouverte()==false )  Plateau::choisir(i-1,j-1);
+                    if ( (i-1 >=0) && (j >= 0))  if (plateau[i-1][j]->getSymbole()!="M" && plateau[i-1][j]->getDecouverte()==false )  Plateau::choisir(i-1,j);
+                    if ( (i-1 >=0) && (j+1 >= 0) && (j+1<colonnes) ) if (plateau[i-1][j+1]->getSymbole()!="M" && plateau[i-1][j+1]->getDecouverte()==false )  Plateau::choisir(i-1,j+1);
 
 
-                    if ( (i >=0) && (j+1 >= 0) && (j+1 <colonnes))
-                            if (plateau[i][j+1]->getSymbole()!="M" && plateau[i][j+1]->getDecouverte()==false )  Plateau::choisir(i,j+1);
-                    if ( (i >=0) && (j-1 >= 0) )
-                            if (plateau[i][j-1]->getSymbole()!="M" && plateau[i][j-1]->getDecouverte()==false )  Plateau::choisir(i,j-1);
+                    if ( (i >=0) && (j+1 >= 0) && (j+1 <colonnes)) if (plateau[i][j+1]->getSymbole()!="M" && plateau[i][j+1]->getDecouverte()==false )  Plateau::choisir(i,j+1);
+                    if ( (i >=0) && (j-1 >= 0) ) if (plateau[i][j-1]->getSymbole()!="M" && plateau[i][j-1]->getDecouverte()==false )  Plateau::choisir(i,j-1);
 
 
-                    if ( (i+1 >=0) && (j-1 >= 0) && (i+1 <lignes) )
-                            if (plateau[i+1][j-1]->getSymbole()!="M" && plateau[i+1][j-1]->getDecouverte()==false )   Plateau::choisir(i+1,j-1);
-
-                    if ( (i+1 >=0) && (j >= 0) && (i+1 <lignes) )
-                            if (plateau[i+1][j]->getSymbole()!="M" && plateau[i+1][j]->getDecouverte()==false )  Plateau::choisir(i+1,j);
-
-                    if ( (i+1 >=0) && (j+1 >= 0) && (i+1 <lignes) && (j+1 <colonnes) )
-                           if (plateau[i+1][j+1]->getSymbole()!="M" && plateau[i+1][j+1]->getDecouverte()==false )  Plateau::choisir(i+1,j+1);
+                    if ( (i+1 >=0) && (j-1 >= 0) && (i+1 <lignes) )if (plateau[i+1][j-1]->getSymbole()!="M" && plateau[i+1][j-1]->getDecouverte()==false )   Plateau::choisir(i+1,j-1);
+                    if ( (i+1 >=0) && (j >= 0) && (i+1 <lignes) ) if (plateau[i+1][j]->getSymbole()!="M" && plateau[i+1][j]->getDecouverte()==false )  Plateau::choisir(i+1,j);
+                    if ( (i+1 >=0) && (j+1 >= 0) && (i+1 <lignes) && (j+1 <colonnes) ) if (plateau[i+1][j+1]->getSymbole()!="M" && plateau[i+1][j+1]->getDecouverte()==false )  Plateau::choisir(i+1,j+1);
 
                     return 0 ; // tous va bien !
                  }

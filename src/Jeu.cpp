@@ -3,8 +3,13 @@
 #include<iostream>
 
 #include <windows.h>
-void ClearScreen()   {   HANDLE                     hStdOut;   CONSOLE_SCREEN_BUFFER_INFO csbi;   DWORD                      count;   DWORD                      cellCount;   COORD                      homeCoords = { 0, 0 };    hStdOut = GetStdHandle( STD_OUTPUT_HANDLE );   if (hStdOut == INVALID_HANDLE_VALUE) return;    /* Get the number of cells in the current buffer */   if (!GetConsoleScreenBufferInfo( hStdOut, &csbi )) return;   cellCount = csbi.dwSize.X *csbi.dwSize.Y;    /* Fill the entire buffer with spaces */   if (!FillConsoleOutputCharacter(     hStdOut,     (TCHAR) ' ',     cellCount,     homeCoords,     &count     )) return;    /* Fill the entire buffer with the current colors and attributes */   if (!FillConsoleOutputAttribute(     hStdOut,     csbi.wAttributes,     cellCount,     homeCoords,     &count     )) return;    /* Move the cursor home */   SetConsoleCursorPosition( hStdOut, homeCoords );   }
-
+void ClearScreen()   {   HANDLE        hStdOut;   CONSOLE_SCREEN_BUFFER_INFO csbi;   DWORD                      count;   DWORD                      cellCount;   COORD                      homeCoords = { 0, 0 };    hStdOut = GetStdHandle( STD_OUTPUT_HANDLE );   if (hStdOut == INVALID_HANDLE_VALUE) return;    /* Get the number of cells in the current buffer */   if (!GetConsoleScreenBufferInfo( hStdOut, &csbi )) return;   cellCount = csbi.dwSize.X *csbi.dwSize.Y;    /* Fill the entire buffer with spaces */   if (!FillConsoleOutputCharacter(     hStdOut,     (TCHAR) ' ',     cellCount,     homeCoords,     &count     )) return;    /* Fill the entire buffer with the current colors and attributes */   if (!FillConsoleOutputAttribute(     hStdOut,     csbi.wAttributes,     cellCount,     homeCoords,     &count     )) return;    /* Move the cursor home */   SetConsoleCursorPosition( hStdOut, homeCoords );   }
+void coutcc(int color, string output){
+HANDLE handle= GetStdHandle(STD_OUTPUT_HANDLE);
+SetConsoleTextAttribute( handle, color);
+cout<< output;
+SetConsoleTextAttribute( handle,7 );
+}
 using namespace std;
 
 Jeu::Jeu(int s, int nb_c ):score(s),nb_coups(nb_c)
@@ -23,9 +28,9 @@ void Jeu::setNb_mines(int a){
 
 void Jeu::affiche_menu(){
 
-cout<<"======================================================================================================="<<endl;
-cout<<"        ==================================Jeu Mineur BY NAW============================="<<endl;
-cout<<"======================================================================================================="<<endl;
+coutcc(3,"=======================================================================================================");cout <<endl;
+coutcc(3,"        ==================================Jeu Mineur BY NAW=============================");cout<<endl;
+coutcc(3,"=======================================================================================================");cout<<endl;
 
 cout <<endl<<endl ;
 
@@ -43,8 +48,11 @@ bool perdu ,gagner;
 
             gagner=false ;
             perdu=false ;
-                 do { ClearScreen();
-                            p.afficher(nb_coups,nb_mines,score);
+            ClearScreen();
+            p.afficher(nb_coups,nb_mines,score);
+                 do { //ClearScreen();
+                            //p.afficher(nb_coups,nb_mines,score);
+                            //p.afficher_tous();
                             //p.afficher_tous();
                          do {cout <<"choix : " ;cin >> ligne >> colonne ;
                             } while ( ligne-1>=l ||  colonne-1 >= c);
@@ -55,6 +63,7 @@ bool perdu ,gagner;
                               if (a==0){score+=3; nb_coups++;}
                              ClearScreen();
                               p.afficher(nb_coups,nb_mines,score);
+                             // p.afficher_tous();
                             if (a == 1) perdu = true ;
                            if (nb_mines==p.nb_couverte()) gagner=true ;
 
@@ -119,8 +128,8 @@ void Jeu::jeu(){
                                gagner =jouer(l,c,m);
 
                                 do{
-                                    if (gagner==true) cout<<endl<<"felicitations vous avez gagner !!!! :) bravo !!"<<endl<<endl;
-                                    else cout<<endl<<"vous avez perdu! :( "<<endl;
+                                    if (gagner==true)  {cout<<endl<<"felicitations vous avez gagner !!!!";  coutcc(14,":) "); cout <<"bravo !!"<<endl<<endl;}
+                                    else   {cout<<endl<<"vous avez perdu! "; coutcc(14,":( !"); cout << endl ;}
                                     cout<<"1. retourner au menu principale"<<endl;
                                     cout<<"2.quitter"<<endl;
 

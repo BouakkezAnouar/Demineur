@@ -36,12 +36,14 @@
 		</Compiler>
 		<Unit filename="include/Blanc.h" />
 		<Unit filename="include/Case.h" />
+		<Unit filename="include/Jeu.h" />
 		<Unit filename="include/Mine.h" />
 		<Unit filename="include/Numero.h" />
 		<Unit filename="include/Plateau.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Blanc.cpp" />
 		<Unit filename="src/Case.cpp" />
+		<Unit filename="src/Jeu.cpp" />
 		<Unit filename="src/Mine.cpp" />
 		<Unit filename="src/Numero.cpp" />
 		<Unit filename="src/Plateau.cpp" />
