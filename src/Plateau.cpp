@@ -255,11 +255,8 @@ void Plateau::afficher_tous(){
 int Plateau::choisir(int i,int j)
 {
 
-
-
                  if (i <lignes && j <colonnes && i>=0 && j>=0  && plateau[i][j]->getDecouverte()==false  )
                  {
-
                        if (plateau[i][j]->getDrapeau()==true)
                           return 4;
                         plateau[i][j]->setDecouverte(true);

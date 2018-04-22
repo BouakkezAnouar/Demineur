@@ -1,6 +1,7 @@
 #include "Jeu.h"
 #include "Plateau.h"
 #include<iostream>
+#include<stdio.h>
 
 #include <windows.h>
 void ClearScreen()   {   HANDLE        hStdOut;   CONSOLE_SCREEN_BUFFER_INFO csbi;   DWORD                      count;   DWORD                      cellCount;   COORD                      homeCoords = { 0, 0 };    hStdOut = GetStdHandle( STD_OUTPUT_HANDLE );   if (hStdOut == INVALID_HANDLE_VALUE) return;    /* Get the number of cells in the current buffer */   if (!GetConsoleScreenBufferInfo( hStdOut, &csbi )) return;   cellCount = csbi.dwSize.X *csbi.dwSize.Y;    /* Fill the entire buffer with spaces */   if (!FillConsoleOutputCharacter(     hStdOut,     (TCHAR) ' ',     cellCount,     homeCoords,     &count     )) return;    /* Fill the entire buffer with the current colors and attributes */   if (!FillConsoleOutputAttribute(     hStdOut,     csbi.wAttributes,     cellCount,     homeCoords,     &count     )) return;    /* Move the cursor home */   SetConsoleCursorPosition( hStdOut, homeCoords );   }
@@ -27,10 +28,24 @@ void Jeu::setNb_mines(int a){
 }
 
 void Jeu::affiche_menu(){
-
+/*
 coutcc(3,"=======================================================================================================");cout <<endl;
 coutcc(3,"        ==================================Jeu Mineur BY NAW=============================");cout<<endl;
 coutcc(3,"=======================================================================================================");cout<<endl;
+*/
+
+
+
+
+     printf("\n\n\n\n");
+      coutcc(19,"                                                                                                           \n\n");
+            coutcc(13,"                /\\    /\\     ---------         /\\         /    --------      ---------     \n");
+            coutcc(2,"               /  \\  /  \\        |            /  \\       /     |             |           \n");
+            coutcc(3,"              /    \\/    \\       |           /    \\     /      | -----       |--------     \n");
+            coutcc(12,"             /            \\      |          /      \\   /       |                      |        \n");
+        coutcc(5,"            /              \\  ---------    /        \\ /        | ------       ------- |    \n\n\n\n\n");
+        coutcc(19,"                                                                                                           \n\n");
+
 
 cout <<endl<<endl ;
 
@@ -115,8 +130,23 @@ bool perdu ,gagner;
 
 
 void Jeu::jeu(){
-    bool gagner ;
+    bool gagner ; string nom ;
     int choix,choix1,choix2,choix3,lignes,colonnes,nb_mines ,l,c,m;
+
+
+ printf("\n\n\n\n");
+      coutcc(19,"                                                                                                           \n\n");
+            coutcc(13,"                /\\    /\\     ---------         /\\         /    --------      ---------     \n");
+            coutcc(2,"               /  \\  /  \\        |            /  \\       /     |             |           \n");
+            coutcc(3,"              /    \\/    \\       |           /    \\     /      | -----       |--------     \n");
+            coutcc(12,"             /            \\      |          /      \\   /       |                      |        \n");
+        coutcc(5,"            /              \\  ---------    /        \\ /        | ------       ------- |    \n\n\n\n\n");
+        coutcc(19,"                                                                                                           \n\n");
+
+
+            coutcc(6, "                                         Nom  : ");
+            cin >> nom ;
+
 
     do {
 
