@@ -136,15 +136,15 @@ void Plateau::placer_chiffres(){
 
 
 int Plateau::setDrapeau(int l, int c,int nb){
-    if (plateau[l][c]->getDecouverte()==true)
+   if (plateau[l][c]->getDecouverte()==true && plateau[l][c]->getDrapeau()==false )
         return 2 ;
-    else {
+    //else {
         if ( plateau[l][c]->getDrapeau()==true)
         {plateau[l][c]->setDrapeau(false); return -1; }
         else { if (nb >0 ) {plateau[l][c]->setDrapeau(true);
                             return 1;}
                             else return 2 ;}
-        }
+       // }
 
 }
 
@@ -256,33 +256,30 @@ int Plateau::choisir(int i,int j)
 {
 
 
-                if (plateau[i][j]->getDrapeau()==true)
-                    return 4;
-                else if (i <lignes && j < colonnes  )
-                 {
-                     plateau[i][j]->setDecouverte(true);
 
-                    if (plateau[i][j]->getSymbole()=="M")
-                        return 1 ;
+                 if (i <lignes && j <colonnes && i>=0 && j>=0  && plateau[i][j]->getDecouverte()==false  )
+                 {
+
+                       if (plateau[i][j]->getDrapeau()==true)
+                          return 4;
+                        plateau[i][j]->setDecouverte(true);
+
+                       if (plateau[i][j]->getSymbole()=="M")
+                           return 1 ;
 
                    if (typeid(*plateau[i][j]) == typeid(Numero))
                         return 2 ;
 
+                    choisir(i-1,j-1);
+                    choisir(i-1,j);
+                    choisir(i-1,j+1);
+                    choisir(i,j+1);
+                    choisir(i,j-1);
+                    choisir(i+1,j-1);
+                    choisir(i+1,j);
+                    choisir(i+1,j+1);
 
-                     if ( (i-1 >=0)  && (j-1 >= 0))  if (plateau[i-1][j-1]->getSymbole()!="M" && plateau[i-1][j-1]->getDecouverte()==false )  Plateau::choisir(i-1,j-1);
-                    if ( (i-1 >=0) && (j >= 0))  if (plateau[i-1][j]->getSymbole()!="M" && plateau[i-1][j]->getDecouverte()==false )  Plateau::choisir(i-1,j);
-                    if ( (i-1 >=0) && (j+1 >= 0) && (j+1<colonnes) ) if (plateau[i-1][j+1]->getSymbole()!="M" && plateau[i-1][j+1]->getDecouverte()==false )  Plateau::choisir(i-1,j+1);
-
-
-                    if ( (i >=0) && (j+1 >= 0) && (j+1 <colonnes)) if (plateau[i][j+1]->getSymbole()!="M" && plateau[i][j+1]->getDecouverte()==false )  Plateau::choisir(i,j+1);
-                    if ( (i >=0) && (j-1 >= 0) ) if (plateau[i][j-1]->getSymbole()!="M" && plateau[i][j-1]->getDecouverte()==false )  Plateau::choisir(i,j-1);
-
-
-                    if ( (i+1 >=0) && (j-1 >= 0) && (i+1 <lignes) )if (plateau[i+1][j-1]->getSymbole()!="M" && plateau[i+1][j-1]->getDecouverte()==false )   Plateau::choisir(i+1,j-1);
-                    if ( (i+1 >=0) && (j >= 0) && (i+1 <lignes) ) if (plateau[i+1][j]->getSymbole()!="M" && plateau[i+1][j]->getDecouverte()==false )  Plateau::choisir(i+1,j);
-                    if ( (i+1 >=0) && (j+1 >= 0) && (i+1 <lignes) && (j+1 <colonnes) ) if (plateau[i+1][j+1]->getSymbole()!="M" && plateau[i+1][j+1]->getDecouverte()==false )  Plateau::choisir(i+1,j+1);
-
-                    return 0 ; // tous va bien !
+                    return 0 ; // tout va bien !
                  }
 
                    return -1 ; // ligne ou colonne donnée est erronée

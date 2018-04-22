@@ -97,7 +97,6 @@ bool perdu ,gagner;
                                     if (r==-1) nb_mines+=1;
                                     else if (r==1 ) nb_mines-=1;
 
-
                                         if (nb_mines==0) if (p.testGagne()==0) gagner=true ;
 
                                       ClearScreen();
