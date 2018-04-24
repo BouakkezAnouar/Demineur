@@ -149,15 +149,15 @@ int Plateau::setDrapeau(int l, int c,int nb){
 }
 
 int Plateau::testGagne(){
-    for (int i=0; i<lignes;i++)
-        for(int j=0 ; j<colonnes;j++)
+  /*  for (int i=0; i<lignes;i++)
+       for(int j=0 ; j<colonnes;j++)
             {
-                if (plateau[i][j]->getSymbole()=="M")
-                        if (plateau[i][j]->getDrapeau()==false)
-                            return 1 ;
+                if (plateau[i][j]->getSymbole()=="M" && plateau[i][j]->getDrapeau()==false)
+                                    return 1 ;
             }
-
-            return 0 ;
+*/
+           if (nb_couverte()==nb_mines) return 0 ;
+                else return 1 ;
 }
 
 

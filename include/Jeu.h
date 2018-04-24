@@ -11,6 +11,7 @@ class Jeu
         void jeu();
         bool jouer(int l, int c , int m);
         void setNb_mines(int a);
+        void lire_score();
 
     protected:
 

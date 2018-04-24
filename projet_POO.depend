@@ -24,7 +24,7 @@
 1523138089 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\mine.h
 	"Case.h"
 
-1524432168 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
+1524600336 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\plateau.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
@@ -55,13 +55,16 @@
 1523138499 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\numero.h
 	"Case.h"
 
-1523660304 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\jeu.h
+1524440207 c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\include\jeu.h
 
-1524433248 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\jeu.cpp
+1524526508 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\jeu.cpp
 	"Jeu.h"
 	"Plateau.h"
 	<iostream>
 	<stdio.h>
+	<fstream>
+	<bits/stdc++.h>
+	<string>
 	<windows.h>
 
 1524342975 source:c:\users\asus\desktop\2ème-semestre\programmation-orienté-objet(c++)\tps\c++\projet_poo\src\drapeau.cpp
